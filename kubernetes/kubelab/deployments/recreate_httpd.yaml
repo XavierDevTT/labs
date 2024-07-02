@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd-testapp1
+  name: httpd-testapp1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: httpd-testapp1
+  template:
+    metadata:
+      labels:
+        app: httpd-testapp1
+    spec:
+      containers:
+      - image: httpd:alpine3.18
+        name: httpd
+  strategy:
+   type: Recreate
